@@ -73,4 +73,20 @@ public class Vector2D
 		float distance = (float)Math.sqrt(Math.pow(p1.getX() - p2.getX(),2) + Math.pow(p1.getY() - p2.getY(), 2));
 		return distance;
 	}
+	
+	public static float direction(Vector2D raytip)
+	{
+		float direction;
+		float nx, ny;
+		nx = raytip.getX();
+		ny = raytip.getY();
+		direction = (float) Math.atan2(ny, nx);
+		return direction;
+	}
+	
+	public static float distance(Vector2D raytip)
+	{
+		float distance = (float)Math.sqrt(Math.pow(raytip.getX(),2) + Math.pow(raytip.getY(), 2));
+		return distance;
+	}
 }

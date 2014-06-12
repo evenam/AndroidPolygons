@@ -7,6 +7,7 @@ public class Polygon
 	private ArrayList<Vector2D> pts;
 	private Vector2D center;
 	private int size;
+	private float radius;
 	
 	public Vector2D getVertex(int i)
 	{
@@ -93,11 +94,17 @@ public class Polygon
 		return size;
 	}
 	
+	public float getRadius()
+	{
+		return radius;
+	}
+	
 	public Polygon()
 	{
 		center = new Vector2D(0, 0);
 		pts = new ArrayList<Vector2D>();
 		size = 0;
+		radius = 0.f;
 	}
 	
 	public Polygon(Vector2D Center)
@@ -105,6 +112,7 @@ public class Polygon
 		center = new Vector2D(Center);
 		pts = new ArrayList<Vector2D>();
 		size = 0;
+		radius = 0.f;
 	}
 	
 	public Polygon(Vector2D Center, ArrayList<Vector2D> points)
@@ -112,17 +120,45 @@ public class Polygon
 		center = new Vector2D(Center);
 		pts = new ArrayList<Vector2D>(points);
 		size = points.size();
+		radius = 0.f;
+		for (int i = 0; i < size; i ++)
+		{
+			if (Vector2D.distance(pts.get(i)) > radius)
+				radius = Vector2D.distance(pts.get(i));
+		}
 	}
 	
 	public Polygon(Polygon p)
 	{
 		center = new Vector2D(p.getCenter());
 		size = 0;
+		radius = p.getRadius();
 		pts = new ArrayList<Vector2D>();
 		for (int i = 0; i < p.getSize(); i ++)
 		{
 			pts.add(new Vector2D(p.getVertex(i)));
 			size ++;
 		}
+	}
+	
+	public static boolean collisionCheck(Polygon p1, Polygon p2)
+	{
+		// collision circle check
+		if ((p1.getRadius() + p2.getRadius()) < (Vector2D.distance(p1.getCenter(), p2.getCenter())))
+			return false;
+		
+		// check lines
+		for (int i = 0; i < p1.getSize(); i ++)
+		{
+			for (int j = 0; j < p2.getSize(); j ++)
+			{
+				
+			}
+		}
+		
+		//check points
+		
+		
+		return false;
 	}
 }
