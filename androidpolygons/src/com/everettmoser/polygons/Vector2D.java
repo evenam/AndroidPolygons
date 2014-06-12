@@ -36,6 +36,12 @@ public class Vector2D
 		y = Y;
 	}
 	
+	public Vector2D(Vector2D copy)
+	{
+		x = copy.getX();
+		y = copy.getY();
+	}
+	
 	public static float dot(Vector2D v1, Vector2D v2)
 	{
 		return (v1.getX() * v2.getX() + v1.getY() * v2.getY());
