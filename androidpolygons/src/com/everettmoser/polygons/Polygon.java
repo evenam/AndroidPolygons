@@ -201,8 +201,8 @@ public class Polygon
 				pt.setY(((cl_x1 * cl_y2 - cl_y1 * cl_x2) * (cl_y3 - cl_y4) - (cl_y1 - cl_y2) * (cl_x3 * cl_y4 - cl_y3 * cl_y4)) / denom);
 				
 				// check if point is on segment
-				if (pointOnLine(p1.getVertex(i), p1.getVertex((i + 1) % p1.getSize()), pt) 
-				 && pointOnLine(p2.getVertex(j), p2.getVertex((j + 1) % p2.getSize()), pt))
+				if (pointOnLine(new Vector2D(cl_x1, cl_y1), new Vector2D(cl_x2, cl_y2), pt) 
+				 && pointOnLine(new Vector2D(cl_x3, cl_y3), new Vector2D(cl_x4, cl_y4), pt))
 					return true;
 			}
 		}
