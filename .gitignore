@@ -69,3 +69,7 @@ local.properties
  
 # PDT-specific
 .buildpath
+
+# Android Specific
+R.java
+BuildConfig.java
